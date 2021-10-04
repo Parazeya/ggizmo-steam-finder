@@ -1,0 +1,52 @@
+{
+  "name": "steam-config-finder",
+  "version": "0.0.1",
+  "description": "Finding all games config",
+  "main": "index.js",
+  "bin": "index.js",
+  "scripts": {
+    "manage": "node manager.js",
+    "debug": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KeZA3D/GGBook-Nodejs.git"
+  },
+  "keywords": [
+    "node-ggbook"
+  ],
+  "pkg": {
+    "scripts": [
+      "./node-modules",
+      "./index.js"
+    ],
+    "targets": [
+      "node14-win-x64"
+    ]
+  },
+  "author": "KeZA3D",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KeZA3D/GGBook-Nodejs/issues"
+  },
+  "homepage": "https://github.com/KeZA3D/GGBook-Nodejs#readme",
+  "dependencies": {
+    "@rauschma/stringio": "^1.4.0",
+    "cli-color": "^2.0.0",
+    "cli-spinners": "^2.6.0",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "mkdirp": "^1.0.4",
+    "moment-range": "^4.0.2",
+    "moment-timezone": "^0.5.33",
+    "node-cmd": "^5.0.0",
+    "node-datetime": "^2.1.2",
+    "node-fetch": "^2.6.1",
+    "path": "^0.12.7",
+    "querystring": "^0.2.1",
+    "rage-edit": "^1.2.0",
+    "spinnies": "^0.5.1",
+    "steam-acf2json": "^0.1.1",
+    "util": "^0.12.4"
+  }
+}

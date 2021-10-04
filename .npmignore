@@ -1,0 +1,9 @@
+test/
+tmp/
+coverage/
+issues/
+.github/
+website/
+*.md
+Dockerfile
+steam-config-finder.exe
