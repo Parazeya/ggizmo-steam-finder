@@ -5,7 +5,7 @@ Automatic search steam games on the computer
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/keza3d/ggizmo-finder)
 
 ## Installation
-Download file and start file `steam-config-finder.exe` 
+Download and start file `steam-config-finder.exe` 
 
 ## Arguments
 `--filename`
