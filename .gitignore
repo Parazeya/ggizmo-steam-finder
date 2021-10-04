@@ -20,5 +20,5 @@ coverage
 tmp
 issues/
 test/fixtures/test*
-
+package-lock.json
 .idea
