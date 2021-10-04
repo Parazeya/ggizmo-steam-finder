@@ -57,7 +57,7 @@ const { Registry } = require('rage-edit')
                 }
             }
         }
-        fs.writeFileSync(`${folder()}\\${filename()}`, JSON.stringify(outputData))
+        fs.writeFileSync(`${folder()}\\${filename()}`, JSON.stringify(outputData, null, 2))
         console.log("Done, close this application. Created file: " + filename())
     } catch (e) {
         console.log(e.message)
