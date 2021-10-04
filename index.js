@@ -28,10 +28,10 @@ const { Registry } = require('rage-edit')
                     Arguments: "steam://rungameid/" + manifest.AppState.appid,
                     WorkingDirectory: manifest.AppState.LauncherPath.replace(/\\\\/g, "\\").replace("\\steam.exe","")
                 })
-                console.log(outputData)
             }
         }
-        fs.writeFileSync(__dirname + "\\apps.json",JSON.stringify(outputData))
+        console.log(process.cwd())
+        fs.writeFileSync(process.cwd() + "\\apps.json",JSON.stringify(outputData))
         console.log("DONE")
     } catch (e) {
         console.log(e.message)

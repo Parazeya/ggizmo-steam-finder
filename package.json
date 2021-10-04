@@ -1,22 +1,22 @@
 {
   "name": "steam-config-finder",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Finding all games config",
   "main": "index.js",
   "bin": "index.js",
   "scripts": {
-    "manage": "node manager.js",
     "debug": "node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KeZA3D/GGBook-Nodejs.git"
+    "url": "git+https://github.com/KeZA3D/ggizmo-steam-finder.git"
   },
   "keywords": [
-    "node-ggbook"
+    "node-ggizmo-steam-finder"
   ],
   "pkg": {
-    "scripts": [
+    "scripts": [],
+    "assets": [
       "./node-modules",
       "./index.js"
     ],
@@ -27,9 +27,9 @@
   "author": "KeZA3D",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/KeZA3D/GGBook-Nodejs/issues"
+    "url": "https://github.com/KeZA3D/ggizmo-steam-finder/issues"
   },
-  "homepage": "https://github.com/KeZA3D/GGBook-Nodejs#readme",
+  "homepage": "https://github.com/KeZA3D/ggizmo-steam-finder#readme",
   "dependencies": {
     "@rauschma/stringio": "^1.4.0",
     "cli-color": "^2.0.0",
