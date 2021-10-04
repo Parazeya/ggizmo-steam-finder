@@ -1,5 +1,5 @@
 # steam-config-finder
-Automatic search Gizmo Server on the computer for Node.js (NOT OFFICIAL) 
+Automatic search steam games on the computer
 
 ![GCGApp](https://ggbook.ru/AdminPanel/public/images/favicon-32x32.png)
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/keza3d/ggizmo-finder)
