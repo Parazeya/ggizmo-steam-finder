@@ -20,11 +20,11 @@ const { Registry } = require('rage-edit')
         if (SteamAppFolders === undefined) throw new Error("Cant read file:", "LibraryFolders.vdf")
         SteamAppVDF = Object.values(SteamAppFolders.libraryfolders).filter(t => t.path !== undefined)
         if (SteamAppVDF === undefined || SteamAppVDF[0] === undefined) {
-            if(!fs.existsSync(SteamPath.replace(/\\\\/g, "/") + "/steamapps"))
+            if (!fs.existsSync(SteamPath.replace(/\\\\/g, "/") + "/steamapps")) return console.log("Path not found!", SteamPath.replace(/\\\\/g, "/") + "/steamapps");
             SteamAppsDirectory = fs.readdirSync(SteamPath.replace(/\\\\/g, "/") + "/steamapps").filter(f => f.split(".").pop() === "acf")
             if (SteamAppsDirectory[0] === undefined) throw new Error("0 manifest finded!")
             for (i in SteamAppsDirectory) {
-                if(!fs.existsSync(fs.readFileSync(SteamPath.replace(/\\\\/g, "/") + "/steamapps/" + SteamAppsDirectory[i]))) return;
+                if (!fs.existsSync(SteamPath.replace(/\\\\/g, "/") + "/steamapps/" + SteamAppsDirectory[i])) continue;
                 manifest = parser(fs.readFileSync(SteamPath.replace(/\\\\/g, "/") + "/steamapps/" + SteamAppsDirectory[i], 'utf8'))
                 sourceIcon = SteamPath + "/appcache/librarycache/" + manifest.AppState.appid + "_icon.jpg";
                 source600x900 = SteamPath + "/appcache/librarycache/" + manifest.AppState.appid + "_library_600x900.jpg"
@@ -44,27 +44,29 @@ const { Registry } = require('rage-edit')
                             INEXClusions: {
                                 ExcludeFiles: "steam_client_win32.installed;steam_client_win32.manifest",
                                 ExcludeDirectories: "steamapps;userdata"
-                            }  
+                            }
                         },
                         SteamApp: {
                             Name: manifest.AppState.name + " Steam",
                             Source: SteamPath.replace(/\\\\/g, "/") + "/steamapps/common/" + manifest.AppState.installdir,
-                            Destination: SteamPath.replace(/\\\\/g, "/") + "/steamapps/common/" + manifest.AppState.installdir   
+                            Destination: SteamPath.replace(/\\\\/g, "/") + "/steamapps/common/" + manifest.AppState.installdir
                         },
                         ACF: {
                             Name: manifest.AppState.name + " ACF",
                             Source: SteamPath.replace(/\\\\/g, "/") + "/steamapps",
-                            Destination: SteamPath.replace(/\\\\/g, "/") + "/steamapps"   
+                            Destination: SteamPath.replace(/\\\\/g, "/") + "/steamapps"
                         }
                     }
                 })
             }
         } else {
             for (i in SteamAppVDF) {
+                if (!fs.existsSync(SteamAppVDF[i].path.replace(/\\\\/g, "/") + "/steamapps")) continue;
                 SteamAppsDirectory = fs.readdirSync(SteamAppVDF[i].path.replace(/\\\\/g, "/") + "/steamapps").filter(f => f.split(".").pop() === "acf")
                 if (SteamAppsDirectory[0] === undefined) continue;
 
                 for (e in SteamAppsDirectory) {
+                    if (!fs.existsSync(SteamAppVDF[i].path.replace(/\\\\/g, "/") + "/steamapps/" + SteamAppsDirectory[e])) continue;
                     manifest = parser(fs.readFileSync(SteamAppVDF[i].path.replace(/\\\\/g, "/") + "/steamapps/" + SteamAppsDirectory[e], 'utf8'))
                     if (manifest.AppState.appid == 228980 || manifest.AppState.name.toLowerCase().search(/ soundtrack/) != -1) continue;
                     sourceIcon = SteamPath + "/appcache/librarycache/" + manifest.AppState.appid + "_icon.jpg";
@@ -85,17 +87,17 @@ const { Registry } = require('rage-edit')
                                 INEXClusions: {
                                     ExcludeFiles: "steam_client_win32.installed;steam_client_win32.manifest",
                                     ExcludeDirectories: "steamapps;userdata"
-                                }  
+                                }
                             },
                             SteamApp: {
                                 Name: manifest.AppState.name + " Steam",
                                 Source: SteamAppVDF[i].path.replace(/\\\\/g, "/") + "/steamapps/common/" + manifest.AppState.installdir,
-                                Destination: SteamAppVDF[i].path.replace(/\\\\/g, "/") + "/steamapps/common/" + manifest.AppState.installdir   
+                                Destination: SteamAppVDF[i].path.replace(/\\\\/g, "/") + "/steamapps/common/" + manifest.AppState.installdir
                             },
                             ACF: {
                                 Name: manifest.AppState.name + " ACF",
                                 Source: SteamAppVDF[i].path.replace(/\\\\/g, "/") + "/steamapps",
-                                Destination: SteamAppVDF[i].path.replace(/\\\\/g, "/") + "/steamapps"   
+                                Destination: SteamAppVDF[i].path.replace(/\\\\/g, "/") + "/steamapps"
                             }
                         }
                     })
@@ -105,7 +107,7 @@ const { Registry } = require('rage-edit')
         fs.writeFileSync(`${folder()}\\${filename()}`, JSON.stringify(outputData, null, 2))
         console.log("Done, close this application. Created file: " + filename())
     } catch (e) {
-        console.log(e.message)
+        console.log(e)
     }
 })()
 
