@@ -20,9 +20,11 @@ const { Registry } = require('rage-edit')
         if (SteamAppFolders === undefined) throw new Error("Cant read file:", "LibraryFolders.vdf")
         SteamAppVDF = Object.values(SteamAppFolders.libraryfolders).filter(t => t.path !== undefined)
         if (SteamAppVDF === undefined || SteamAppVDF[0] === undefined) {
+            if(!fs.existsSync(SteamPath.replace(/\\\\/g, "/") + "/steamapps"))
             SteamAppsDirectory = fs.readdirSync(SteamPath.replace(/\\\\/g, "/") + "/steamapps").filter(f => f.split(".").pop() === "acf")
             if (SteamAppsDirectory[0] === undefined) throw new Error("0 manifest finded!")
             for (i in SteamAppsDirectory) {
+                if(!fs.existsSync(fs.readFileSync(SteamPath.replace(/\\\\/g, "/") + "/steamapps/" + SteamAppsDirectory[i]))) return;
                 manifest = parser(fs.readFileSync(SteamPath.replace(/\\\\/g, "/") + "/steamapps/" + SteamAppsDirectory[i], 'utf8'))
                 sourceIcon = SteamPath + "/appcache/librarycache/" + manifest.AppState.appid + "_icon.jpg";
                 source600x900 = SteamPath + "/appcache/librarycache/" + manifest.AppState.appid + "_library_600x900.jpg"
